@@ -2,10 +2,24 @@
 
 For the full story, see [Reverse Engineering the TP-Link HS110](https://www.softscheck.com/en/reverse-engineering-tp-link-hs110/)
 
+## tplink_smartplug_module.py ##
+
+A script derived from tplink_smartplug.py that can be used as python module, with a sendCommand function to send json commands to TPLink SmartPlug devices from a python script.
+
+#### Usage ####
+
+`       
+import tplink_smartplug_module
+
+tplink_smartplug_module.sendCommand("ip", "jsonCommand");
+`
+
+See the json commands here: [tplink-smarthome-commands.txt](tplink-smarthome-commands.txt).
+
 ## tplink-smartplug.py ##
 
-A python client (tplink-smartplug.py) and a module (tplink_smartplug_module.py) for the proprietary TP-Link Smart Home protocol to control TP-Link HS100 and HS110 WiFi Smart Plugs.
-The SmartHome protocol runs on TCP port 9999 and uses a trivial XOR autokey encryption that provides no security. 
+A python client for the proprietary TP-Link Smart Home protocol to control TP-Link HS100 and HS110 WiFi Smart Plugs.
+The SmartHome protocol runs on TCP port 9999 and uses a trivial XOR autokey encryption that provides no security.
 
 There is no authentication mechanism and commands are accepted independent of device state (configured/unconfigured).
 
@@ -20,18 +34,7 @@ Instead of `null` we can also write `{}`. Commands can be nested, for example:
 
 A full list of commands is provided in [tplink-smarthome-commands.txt](tplink-smarthome-commands.txt).
 
-
-#### Usage ####
-
-As python module:
-
-`       
-import tplink_smartplug_module
-
-tplink_smartplug_module.sendCommand("ip", "jsonCommand");
-`
-
-As executable client:
+### Usage ###
 
    `./tplink-smarthome.py -t <ip> [-c <cmd> || -j <json>]`
 
@@ -53,4 +56,3 @@ Provide the target IP using `-t` and a command to send using either `-c` or `-j`
 | reset     | Reset the device to factory settings |
 
 More advanced commands such as creating or editing rules can be issued using the `-j` flag by providing the full JSON string for the command. Please consult [tplink-smarthome-commands.txt](tplink-smarthome-commands.txt) for a comprehensive list of commands.
-
