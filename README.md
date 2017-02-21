@@ -9,6 +9,7 @@ A script derived from tplink_smartplug.py that can be used as python module, wit
 #### Usage ####
 
 `import tplink_smartplug_module`
+
 `tplink_smartplug_module.sendCommand("ip", "jsonCommand");`
 
 See the json commands here: [tplink-smarthome-commands.txt](tplink-smarthome-commands.txt).
